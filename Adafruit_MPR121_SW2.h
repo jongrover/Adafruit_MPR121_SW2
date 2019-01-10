@@ -26,6 +26,7 @@
  #include "WProgram.h"
 #endif
 #include <Wire.h>
+#include <SoftwareWire.h>
 
 // The default I2C address
 #define MPR121_SW2_I2CADDR_DEFAULT 0x5A ///< default I2C address

@@ -35,6 +35,8 @@
 Adafruit_MPR121_SW2::Adafruit_MPR121_SW2() {
 }
 
+SoftwareWire myWire(18, 19);
+
 /**
  *****************************************************************************************
  *  @brief      Begin an MPR121 object on a given I2C bus. This function resets the
@@ -44,7 +46,7 @@ Adafruit_MPR121_SW2::Adafruit_MPR121_SW2() {
  *  @returns    true on success, false otherwise
  ****************************************************************************************/
 boolean Adafruit_MPR121_SW2::begin(uint8_t i2caddr) {
-  Wire.begin();
+  myWire.begin();
 
   _i2caddr = i2caddr;
 
@@ -176,13 +178,13 @@ uint16_t  Adafruit_MPR121_SW2::touched(void) {
  *  @returns    the 8 bit value that was read.
  ****************************************************************************************/
 uint8_t Adafruit_MPR121_SW2::readRegister8(uint8_t reg) {
-    Wire.beginTransmission(_i2caddr);
-    Wire.write(reg);
-    Wire.endTransmission(false);
-    Wire.requestFrom(_i2caddr, 1);
-    if (Wire.available() < 1)
+    myWire.beginTransmission(_i2caddr);
+    myWire.write(reg);
+    myWire.endTransmission(false);
+    myWire.requestFrom(_i2caddr, 1);
+    if (myWire.available() < 1)
       return 0;
-    return (Wire.read());
+    return (myWire.read());
 }
 
 /**
@@ -193,14 +195,14 @@ uint8_t Adafruit_MPR121_SW2::readRegister8(uint8_t reg) {
  *  @returns    the 16 bit value that was read.
  ****************************************************************************************/
 uint16_t Adafruit_MPR121_SW2::readRegister16(uint8_t reg) {
-    Wire.beginTransmission(_i2caddr);
-    Wire.write(reg);
-    Wire.endTransmission(false);
-    Wire.requestFrom(_i2caddr, 2);
-    if (Wire.available() < 2)
+    myWire.beginTransmission(_i2caddr);
+    myWire.write(reg);
+    myWire.endTransmission(false);
+    myWire.requestFrom(_i2caddr, 2);
+    if (myWire.available() < 2)
       return 0;
-    uint16_t v = Wire.read();
-    v |=  ((uint16_t) Wire.read()) << 8;
+    uint16_t v = myWire.read();
+    v |=  ((uint16_t) myWire.read()) << 8;
     return v;
 }
 
@@ -213,8 +215,8 @@ uint16_t Adafruit_MPR121_SW2::readRegister16(uint8_t reg) {
 */
 /**************************************************************************/
 void Adafruit_MPR121_SW2::writeRegister(uint8_t reg, uint8_t value) {
-    Wire.beginTransmission(_i2caddr);
-    Wire.write((uint8_t)reg);
-    Wire.write((uint8_t)(value));
-    Wire.endTransmission();
+    myWire.beginTransmission(_i2caddr);
+    myWire.write((uint8_t)reg);
+    myWire.write((uint8_t)(value));
+    myWire.endTransmission();
 }
