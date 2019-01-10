@@ -1,6 +1,6 @@
 # Hacked ADAFruit MPR121 Library to use SoftwareWire instead of Wire library
 
-You can use this library along side the original Adafruit MPR121 library to connect 8 or more MPR121 capacitive touch boards at the same time. See my example code in the examples folder. I used an Arduino Mega and set the first 4 boards i call A through D on pins 20 and 21 of Arduino these pins are using the standard Adafruit_MPR121 library that relies on the Wire library. Then on self assigned pins 18, 19 I'm using my modified Adafruit_MPR121_SW2 library that relies on the SoftwareWire library instead. In this case I'm using these 8 boards to allow for 96 separate triggers to playback 96 WAV files via talking to the Sparkfun Tsunami Super WAV Trigger.
+You can use this library along side the original Adafruit MPR121 library to connect 8 or more MPR121 capacitive touch boards at the same time. See my example code in the examples folder. I used an Arduino Mega and set the first 4 boards i call A through D on pins 20 and 21 of Arduino these pins are using the standard Adafruit_MPR121 library that relies on the Wire library. Then on self assigned pins 18, 19 i use to talk to boards 5 to 8 i call E though H, I'm using my modified Adafruit_MPR121_SW2 library that relies on the SoftwareWire library instead. In this case I'm using these 8 boards to allow for 96 separate triggers to playback 96 WAV files via talking to the Sparkfun Tsunami Super WAV Trigger yet another library for using Arduino to talk to Sparkfun Tsunami Wav Trigger boards.
 
 # Dependency Libraries for Example Code
 
